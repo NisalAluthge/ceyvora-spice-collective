@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/ceyvora-logo.png";
 
 const links = [
   { label: "Products", href: "#specs" },
@@ -26,9 +27,11 @@ const Navbar = () => {
     >
       <nav className="container flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
-          <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-primary/40">
-            <span className="h-2 w-2 rounded-full bg-primary animate-float" />
-          </span>
+          <img
+            src={logo}
+            alt="Ceyvora Ceylon Spices logo"
+            className="h-11 w-11 rounded-full object-cover ring-1 ring-primary/40 shadow-gold/30 transition-transform group-hover:scale-105"
+          />
           <div className="leading-none">
             <div className="font-serif text-xl tracking-wide">Ceyvora</div>
             <div className="hairline text-primary/80 mt-1">Ceylon Spices</div>

@@ -1,3 +1,5 @@
+import logo from "@/assets/ceyvora-logo.png";
+
 const Footer = () => {
   return (
     <footer className="relative border-t border-primary/10 py-16 bg-background">
@@ -5,9 +7,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/40">
-                <span className="h-2 w-2 rounded-full bg-primary" />
-              </span>
+              <img
+                src={logo}
+                alt="Ceyvora Ceylon Spices logo"
+                className="h-12 w-12 rounded-full object-cover ring-1 ring-primary/40"
+              />
               <div>
                 <div className="font-serif text-xl">Ceyvora</div>
                 <div className="hairline text-primary/80 mt-1">Ceylon Spices</div>
