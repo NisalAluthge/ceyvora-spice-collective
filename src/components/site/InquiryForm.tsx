@@ -1,18 +1,73 @@
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+
+const inquirySchema = z.object({
+  company: z.string().trim().min(1).max(200),
+  contact: z.string().trim().min(1).max(200),
+  email: z.string().trim().email().max(255),
+  phone: z.string().trim().max(50).optional().or(z.literal("")),
+  destination: z.string().trim().min(1).max(200),
+  volume: z.string().trim().min(1).max(100),
+  message: z.string().trim().max(2000).optional().or(z.literal("")),
+});
 
 const InquiryForm = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [busy, setBusy] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const company = data.get("company");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const payload = {
+      company: String(data.get("company") || ""),
+      contact: String(data.get("contact") || ""),
+      email: String(data.get("email") || ""),
+      phone: String(data.get("phone") || ""),
+      destination: String(data.get("destination") || ""),
+      volume: String(data.get("volume") || ""),
+      message: String(data.get("message") || ""),
+    };
+    const products = data.getAll("products").map(String);
+
+    const parsed = inquirySchema.safeParse(payload);
+    if (!parsed.success) {
+      toast({ title: "Please check your input", description: parsed.error.errors[0].message, variant: "destructive" });
+      return;
+    }
+
+    setBusy(true);
+    const { data: inserted, error } = await supabase.from("inquiries").insert({
+      company: parsed.data.company,
+      contact: parsed.data.contact,
+      email: parsed.data.email,
+      phone: parsed.data.phone || null,
+      destination: parsed.data.destination,
+      volume: parsed.data.volume,
+      products,
+      message: parsed.data.message || null,
+    }).select("id").single();
+
+    if (error) {
+      setBusy(false);
+      toast({ title: "Submission failed", description: error.message, variant: "destructive" });
+      return;
+    }
+
+    // Fire-and-forget email notification
+    supabase.functions.invoke("notify-new-inquiry", {
+      body: { inquiryId: inserted.id },
+    }).catch(() => {});
+
+    setBusy(false);
     setSubmitted(true);
     toast({
       title: "Inquiry received",
-      description: `Thank you, ${company}. Our export desk will respond within 24 hours.`,
+      description: `Thank you, ${parsed.data.company}. Our export desk will respond within 24 hours.`,
     });
   };
 
@@ -97,9 +152,10 @@ const InquiryForm = () => {
 
                 <button
                   type="submit"
-                  className="group mt-8 w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-gold text-primary-foreground font-medium hover:shadow-gold transition-all"
+                  disabled={busy}
+                  className="group mt-8 w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-gold text-primary-foreground font-medium hover:shadow-gold transition-all disabled:opacity-60"
                 >
-                  Submit Inquiry
+                  {busy ? "Submitting..." : "Submit Inquiry"}
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </button>
                 <p className="text-xs text-foreground/50 mt-4 text-center">
