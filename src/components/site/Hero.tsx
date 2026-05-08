@@ -1,8 +1,29 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero-cinnamon.jpg";
 import { ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+
+const DEFAULTS = {
+  hero_eyebrow: "Est. Sri Lanka · Export Grade",
+  hero_heading: "Ceyvora: Redefining the Ceylon Spice Standard.",
+  hero_subtext:
+    "Direct-from-farm aggregation specializing in hand-verified Alba Cinnamon and Grade 1 Black Pepper — delivered with the rigor of a luxury house and the soul of an artisan.",
+};
 
 const Hero = () => {
+  const [content, setContent] = useState(DEFAULTS);
+
+  useEffect(() => {
+    supabase.from("site_content").select("key,value").then(({ data }) => {
+      if (!data) return;
+      const map = { ...DEFAULTS };
+      data.forEach((r) => {
+        if (r.key in map) (map as any)[r.key] = r.value;
+      });
+      setContent(map);
+    });
+  }, []);
+
   const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,15 +55,15 @@ const Hero = () => {
         <div className="max-w-4xl animate-fade-in-slow">
           <div className="flex items-center gap-3 mb-8">
             <span className="h-px w-12 bg-primary" />
-            <span className="hairline text-primary">Est. Sri Lanka · Export Grade</span>
+            <span className="hairline text-primary">{content.hero_eyebrow}</span>
           </div>
 
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight">
-            Ceyvora: <span className="italic text-gold-gradient">Redefining</span> the Ceylon Spice Standard.
+            {content.hero_heading}
           </h1>
 
           <p className="mt-8 text-lg md:text-xl text-foreground/75 max-w-2xl leading-relaxed">
-            Direct-from-farm aggregation specializing in hand-verified Alba Cinnamon and Grade 1 Black Pepper — delivered with the rigor of a luxury house and the soul of an artisan.
+            {content.hero_subtext}
           </p>
 
           <div className="mt-12 flex flex-wrap gap-4">
