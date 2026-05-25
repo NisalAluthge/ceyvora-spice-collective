@@ -41,7 +41,7 @@ const BondSection = () => {
             <div className="absolute -bottom-6 -right-4 md:-right-10 glass-card rounded-xl p-5 w-64 shadow-luxe">
               <div className="hairline text-primary mb-2">Founders</div>
               <div className="font-serif text-xl">Nisal & Shashikala</div>
-              <div className="text-xs text-foreground/60 mt-1">Ceyvora · Galle, Sri Lanka</div>
+              <div className="text-xs text-foreground/60 mt-1">Taste of Ceylon · Galle, Sri Lanka</div>
             </div>
           </div>
 
@@ -49,13 +49,13 @@ const BondSection = () => {
           <div className="lg:col-span-7 lg:pl-8">
             <div className="flex items-center gap-3 mb-6">
               <span className="h-px w-12 bg-primary" />
-              <span className="hairline text-primary">The Ceyvora Bond</span>
+              <span className="hairline text-primary">The Taste of Ceylon Bond</span>
             </div>
             <h2 className="font-serif text-4xl md:text-6xl leading-[1.05]">
               Human-verified sourcing, <em className="italic text-gold-gradient not-italic">not</em> automated aggregation.
             </h2>
             <p className="mt-8 text-foreground/75 text-lg leading-relaxed">
-              Founded by Nisal and Shashikala, Ceyvora operates on a simple premise: the finest Ceylon spice is a product of human judgment — of hands that have stripped bark for thirty years, of eyes that know when a peppercorn has reached its density.
+              Founded by Nisal and Shashikala, Taste of Ceylon operates on a simple premise: the finest Ceylon spice is a product of human judgment — of hands that have stripped bark for thirty years, of eyes that know when a peppercorn has reached its density.
             </p>
             <p className="mt-4 text-foreground/75 text-lg leading-relaxed">
               We visit every farm. We grade every lot ourselves. We refuse the convenience of algorithms where craft is required.

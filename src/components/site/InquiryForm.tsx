@@ -159,7 +159,7 @@ const InquiryForm = () => {
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </button>
                 <p className="text-xs text-foreground/50 mt-4 text-center">
-                  By submitting, you agree to be contacted by the Ceyvora export desk regarding your inquiry.
+                  By submitting, you agree to be contacted by the Taste of Ceylon export desk regarding your inquiry.
                 </p>
               </>
             )}

@@ -97,7 +97,7 @@ const Admin = () => {
       <header className="border-b border-primary/10 sticky top-0 z-10 bg-background/80 backdrop-blur">
         <div className="container py-4 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <Link to="/" className="font-serif text-xl">Ceyvora · Admin</Link>
+            <Link to="/" className="font-serif text-xl">Taste of Ceylon · Admin</Link>
             <nav className="flex gap-1">
               <button
                 onClick={() => setTab("inquiries")}
