@@ -13,7 +13,7 @@ const Footer = () => {
                 className="h-12 w-12 rounded-full object-cover ring-1 ring-primary/40"
               />
               <div>
-                <div className="font-serif text-xl">Ceyvora</div>
+                <div className="font-serif text-xl">Taste of Ceylon</div>
                 <div className="hairline text-primary/80 mt-1">Ceylon Spices</div>
               </div>
             </div>
