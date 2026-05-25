@@ -9,11 +9,11 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <img
                 src={logo}
-                alt="Ceyvora Ceylon Spices logo"
+                alt="Taste of Ceylon logo"
                 className="h-12 w-12 rounded-full object-cover ring-1 ring-primary/40"
               />
               <div>
-                <div className="font-serif text-xl">Ceyvora</div>
+                <div className="font-serif text-xl">Taste of Ceylon</div>
                 <div className="hairline text-primary/80 mt-1">Ceylon Spices</div>
               </div>
             </div>
@@ -43,7 +43,7 @@ const Footer = () => {
 
         <div className="gold-divider mt-12 mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-foreground/40">
-          <div>© {new Date().getFullYear()} Ceyvora (Pvt) Ltd. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Taste of Ceylon (Pvt) Ltd. All rights reserved.</div>
           <div className="hairline">Crafted in Ceylon</div>
         </div>
       </div>

@@ -69,7 +69,7 @@ const Auth = () => {
     <div className="min-h-screen bg-background flex items-center justify-center px-6">
       <div className="w-full max-w-md glass-card rounded-2xl p-8 md:p-10 shadow-luxe">
         <h1 className="font-serif text-3xl mb-2">{mode === "signin" ? "Admin Sign In" : "Create Account"}</h1>
-        <p className="text-foreground/60 text-sm mb-8">Ceyvora backend access</p>
+        <p className="text-foreground/60 text-sm mb-8">Taste of Ceylon backend access</p>
 
         <button
           onClick={handleGoogle}

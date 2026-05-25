@@ -29,11 +29,11 @@ const Navbar = () => {
         <a href="#" className="flex items-center gap-3 group">
           <img
             src={logo}
-            alt="Ceyvora Ceylon Spices logo"
+            alt="Taste of Ceylon logo"
             className="h-11 w-11 rounded-full object-cover ring-1 ring-primary/40 shadow-gold/30 transition-transform group-hover:scale-105"
           />
           <div className="leading-none">
-            <div className="font-serif text-xl tracking-wide">Ceyvora</div>
+            <div className="font-serif text-xl tracking-wide">Taste of Ceylon</div>
             <div className="hairline text-primary/80 mt-1">Ceylon Spices</div>
           </div>
         </a>

@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const DEFAULTS = {
   hero_eyebrow: "Est. Sri Lanka · Export Grade",
-  hero_heading: "Ceyvora: Redefining the Ceylon Spice Standard.",
+  hero_heading: "Taste of Ceylon: Redefining the Ceylon Spice Standard.",
   hero_subtext:
     "Direct-from-farm aggregation specializing in hand-verified Alba Cinnamon and Grade 1 Black Pepper — delivered with the rigor of a luxury house and the soul of an artisan.",
 };
